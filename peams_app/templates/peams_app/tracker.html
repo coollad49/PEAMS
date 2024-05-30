@@ -1,0 +1,50 @@
+{% extends 'peams_app/layout.html' %}
+{% load static %}
+
+{% block title%}
+    <title>Expiration Date Tracker</title>
+{% endblock%}
+
+{% block body %}
+    <div class="main-content">
+        <h1>Expiration Date Tracker</h1>
+
+        <div class="add-item">
+            <input type="text" id="new-item-input" placeholder="Add new item">
+            <button onclick="addNewItem()">Add</button>
+        </div>
+
+        <div class="dashboard-summary">
+            <div class="dashboard-item">
+                <h3>Expiring Soon</h3>
+                <p id="expiring-soon">0</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>Expired</h3>
+                <p id="expired">0</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>Notifications</h3>
+                <p id="notifications">0</p>
+            </div>
+        </div>
+
+        <h2>Expiration Calendar</h2>
+        <table class="expiration-calendar">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Item</th>
+                    <th>Expiration</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+                <!-- Calendar entries will be dynamically added here using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script %}
+        <script src="{% static 'peams_app/tracker.js' %}"></script>
+{% endblock %}

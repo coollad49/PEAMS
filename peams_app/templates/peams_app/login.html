@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'peams_app/login.css' %}">
+    <script src="{% static 'peams_app/script.js' %}"></script>
+</head>
+<body>
+    <div class="main-content">
+        <div class="login-container">
+            <h1>PEAMS Login</h1>
+            <form id="login-form" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 PEAMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

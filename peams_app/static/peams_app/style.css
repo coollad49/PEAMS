@@ -1,0 +1,171 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero {
+  background-image: url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #000000;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.cta {
+  background-color: #ff6600;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.features {
+  background-color: #f2f2f2;
+  padding: 40px;
+  text-align: center;
+}
+
+.features ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features ul li {
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about {
+  padding: 40px;
+  text-align: center;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.add-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.add-item input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-item button {
+  background-color: #ff6600;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.dashboard-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dashboard-item {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expiration-calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expiration-calendar th, .expiration-calendar td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.expiration-calendar th {
+  background-color: #333;
+  color: #fff;
+
+}.container {
+  display: flex;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.sidebar .logo {
+  margin-bottom: 20px;
+}
+
+.notifications-panel {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.notification {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.notification.warning {
+  background-color: #ffff99;
+}
+
+.notification.expired {
+  background-color: #ffcdd2;
+  color: #c63737;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}

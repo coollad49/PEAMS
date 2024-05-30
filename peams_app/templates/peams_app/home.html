@@ -1,0 +1,35 @@
+{% extends 'peams_app/layout.html' %}
+{% load static %}
+
+{% block title%}
+    <title>PEAMS - Product Expiry and Asset Management System</title>
+{% endblock%}
+
+{% block body %}
+    <section class="hero">
+        <h1>Streamline Your Product Expiry Management</h1>
+        <p>PEAMS is a comprehensive solution to ensure consumer safety, minimize financial losses, and maintain regulatory compliance.</p>
+        <button class="cta">Get Started</button>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <ul>
+            <li><i class="fas fa-clipboard-list"></i> Comprehensive Inventory Management</li>
+            <li><i class="fas fa-bell"></i> Automated Alert Generation</li>
+            <li><i class="fas fa-check-circle"></i> Regulatory Compliance</li>
+            <li><i class="fas fa-chart-bar"></i> Data Analytics and Reporting</li>
+            <li><i class="fas fa-puzzle-piece"></i> Integration with Enterprise Systems</li>
+        </ul>
+    </section>
+
+    <section class="about">
+        <h2>About PEAMS</h2>
+        <p>PEAMS is a cutting-edge solution designed to revolutionize product expiry management in Nigeria. By leveraging advanced technologies, we empower organizations across various industries to proactively manage their inventory, minimize wastage, and ensure compliance with regulatory requirements.</p>
+    </section>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'peams_app/script.js' %}"></script>
+{% endblock %}
