@@ -8,33 +8,37 @@
 {% block body %}
     <div class="maiin-content">
         <div class="product-container">
-            <div class="add-item">
-                <input type="text" id="new-item-input" placeholder="Add new item">
+            <form class="add-item" action="{% url 'products' %}" method="post">
+                {% csrf_token %}
+                <input type="text" id="new-item-input" name="product" placeholder="Add new Product">
+                <input type="text" name="expiry" placeholder="Expiry (yr-m-d)">
                 <button id="addItemBtn">Add</button>
-            </div>
+            </form>
             <h2>Product Information</h2>
-            <div class="product-info">
-                <div>
-                    <h3>Product Name</h3>
-                    <p>Vitamin C Tablets</p>
-                </div>
-                <div>
-                    <h3>Manufacturing Date</h3>
-                    <p>01/01/2023</p>
-                </div>
-                <div>
-                    <h3>Expiry Date</h3>
-                    <p>31/12/2025</p>
-                </div>
-                <div>
-                    <h3>Batch No.</h3>
-                    <p>ABC123</p>
-                </div>
-            </div>
-            <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Date Added</th>
+                        <th>Expiry Date</th>
+                        <th>Batch No.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.date_added }}</td>
+                            <td>{{ product.expiry_date }}</td>
+                            <td>{{ product.batch_no }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- <div>
                 <h3>Inventory Tracking</h3>
                 <canvas id="inventoryChart" width="800" height="400"></canvas>
-            </div>
+            </div> -->
         </div>
     </div>
 

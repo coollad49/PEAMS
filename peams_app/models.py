@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import random
+import string
 
 
 # Create your models here.
@@ -17,4 +19,15 @@ class Product(models.Model):
 
     def __str__(self):
         return F"{self.name} with batch no: {self.batch_no}"
+    
+    def save(self, *args, **kwargs):
+    # Generate a random alphanumeric string for batch_no
+        self.batch_no = ''.join([
+        random.choice(string.ascii_uppercase),
+        random.choice(string.ascii_uppercase),
+        random.choice(string.ascii_uppercase),
+        '_',
+        str(random.randint(100, 999))
+        ])
+        super().save(*args, **kwargs)
         
