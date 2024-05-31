@@ -8,6 +8,7 @@
     {% block title %} {% endblock %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'peams_app/style.css'%}">
+    
 </head>
 <body>
     <header>
@@ -17,7 +18,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
                 <li><a href="{% url 'tracker' %}">Tracker</a></li>
                 <li><a href="{% url 'notify' %}">Notifications</a></li>
             </ul>

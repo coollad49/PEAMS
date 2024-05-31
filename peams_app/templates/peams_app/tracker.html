@@ -8,24 +8,24 @@
 {% block body %}
     <div class="main-content">
         <h1>Expiration Date Tracker</h1>
-
+        
         <div class="add-item">
-            <input type="text" id="new-item-input" placeholder="Add new item">
-            <button onclick="addNewItem()">Add</button>
+            <input type="text" id="searchInput" placeholder="Search here..." onkeydown="if (event.keyCode === 13) searchCalendarEntries()">
+            <button onclick="searchCalendarEntries()">Search</button>
         </div>
 
         <div class="dashboard-summary">
             <div class="dashboard-item">
                 <h3>Expiring Soon</h3>
-                <p id="expiring-soon">0</p>
+                <p id="expiring-soon">{{about_to_expire}}</p>
             </div>
             <div class="dashboard-item">
                 <h3>Expired</h3>
-                <p id="expired">0</p>
+                <p id="expired">{{expired}}</p>
             </div>
             <div class="dashboard-item">
                 <h3>Notifications</h3>
-                <p id="notifications">0</p>
+                <p id="notifications">{{notification_count}}</p>
             </div>
         </div>
 
@@ -40,11 +40,70 @@
             </thead>
             <tbody id="calendar-body">
                 <!-- Calendar entries will be dynamically added here using JavaScript -->
+                {% for product in products %}
+                    <tr>
+                        <td>{{product.date_added}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.expiry_date}}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p>
+        </div>
     </div>
 {% endblock %}
 
 {% block script %}
-        <script src="{% static 'peams_app/tracker.js' %}"></script>
+    <script type="text/javascript">
+        const calendarBody = document.getElementById('calendar-body');
+        const sampleEntries = [
+            {% for product in products %}
+                { 
+                    date: '{{ product.date_added}}', 
+                    item: '{{ product.name }}', 
+                    expiration: '{{ product.expiry_date}}' 
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        // Get the modal and modal message elements
+        const modal = document.getElementById("myModal");
+        const modalMessage = document.getElementById("modalMessage");
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the close button, close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function searchCalendarEntries() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            if (searchTerm) {
+                const foundEntry = sampleEntries.find(entry => entry.item.toLowerCase().includes(searchTerm));
+
+                if (foundEntry) {
+                    modalMessage.textContent = `Found entry: ${foundEntry.item} (Expiration: ${foundEntry.expiration})`;
+                    modal.style.display = "block";
+                } else {
+                    modalMessage.textContent = "No matching entry found.";
+                    modal.style.display = "block";
+                }
+            }
+        }
+    </script>
 {% endblock %}

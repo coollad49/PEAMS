@@ -15,5 +15,35 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'peams_app/notify.js' %}"></script>
+    <script type="text/javascript">
+        // Sample data for product expiry alerts
+        const alerts = [
+            {% for product in products %}
+                { 
+                    id: '{{product.id}}',
+                    product: '{{ product.name}}', 
+                    expiryDate: '{{ product.expiry_date }}', 
+                    type: '{{ product.alert_status}}' 
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+            // Add more alerts as needed
+        ];
+
+        // Function to render notification items
+        function renderNotification(alert) {
+            const notificationList = document.querySelector('.notifications-list');
+            const notification = document.createElement('li');
+            notification.classList.add('notification', alert.type);
+            if (alert.type == 'warning'){
+                notification.textContent = `${alert.product} expires on ${alert.expiryDate}`;
+            }
+            else{
+                notification.textContent = `${alert.product} has Expired.`;
+            }
+            notificationList.appendChild(notification);
+        }
+
+        // Render notifications
+        alerts.forEach(alert => renderNotification(alert));
+    </script>
 {% endblock %}

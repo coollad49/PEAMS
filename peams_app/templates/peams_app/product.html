@@ -1,0 +1,49 @@
+{% extends 'peams_app/layout.html' %}
+{% load static %}
+
+{% block title%}
+    <title>Products</title>
+{% endblock%}
+
+{% block body %}
+    <div class="maiin-content">
+        <div class="product-container">
+            <div class="add-item">
+                <input type="text" id="new-item-input" placeholder="Add new item">
+                <button id="addItemBtn">Add</button>
+            </div>
+            <h2>Product Information</h2>
+            <div class="product-info">
+                <div>
+                    <h3>Product Name</h3>
+                    <p>Vitamin C Tablets</p>
+                </div>
+                <div>
+                    <h3>Manufacturing Date</h3>
+                    <p>01/01/2023</p>
+                </div>
+                <div>
+                    <h3>Expiry Date</h3>
+                    <p>31/12/2025</p>
+                </div>
+                <div>
+                    <h3>Batch No.</h3>
+                    <p>ABC123</p>
+                </div>
+            </div>
+            <div>
+                <h3>Inventory Tracking</h3>
+                <canvas id="inventoryChart" width="800" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+        <script src="{% static 'peams_app/tracker.js' %}"></script>
+{% endblock %}
+</body>
+</html>
+        
+

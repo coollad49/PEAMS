@@ -17,30 +17,53 @@ const sampleEntries = [
 ];
 
 sampleEntries.forEach(entry => {
-    addCalendarEntry(entry.date, entry.item, entry.expiration);
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${entry.date}</td>
+        <td>${entry.item}</td>
+        <td>${entry.expiration}</td>
+    `;
+    calendarBody.appendChild(row);
+
 });
 
-function addNewItem() {
-    const newItemInput = document.getElementById('new-item-input');
-    const newItem = newItemInput.value.trim();
-    if (newItem) {
-        const expirationDate = prompt('Enter the expiration date (YYYY-MM-DD):');
-        addCalendarEntry(getCurrentDate(), newItem, expirationDate);
-        newItemInput.value = '';
+// Get the modal and modal message elements
+const modal = document.getElementById("myModal");
+const modalMessage = document.getElementById("modalMessage");
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the close button, close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 }
 
-function addCalendarEntry(date, item, expiration) {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${date}</td>
-        <td>${item}</td>
-        <td>${expiration}</td>
-    `;
-    calendarBody.appendChild(row);
-}
+function searchCalendarEntries() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value.trim().toLowerCase();
 
-function getCurrentDate() {
-    const today = new Date();
-    return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    if (searchTerm) {
+        const foundEntry = sampleEntries.find(entry => entry.item.toLowerCase().includes(searchTerm));
+
+        if (foundEntry) {
+            modalMessage.textContent = `Found entry: ${foundEntry.item} (Expiration: ${foundEntry.expiration})`;
+            modal.style.display = "block";
+        } else {
+            modalMessage.textContent = "No matching entry found.";
+            modal.style.display = "block";
+        }
+    }
 }
+// function getCurrentDate() {
+//     const today = new Date();
+//     return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+// }
+
