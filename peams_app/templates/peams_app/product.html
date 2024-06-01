@@ -31,6 +31,7 @@
                             <td>{{ product.date_added }}</td>
                             <td>{{ product.expiry_date }}</td>
                             <td>{{ product.batch_no }}</td>
+                            <td><a href="{% url 'delete-product' product.batch_no %}"><button>delete</button></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

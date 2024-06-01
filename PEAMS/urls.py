@@ -11,4 +11,5 @@ urlpatterns = [
     path('tracker/', views.tracker, name='tracker'),
     path('notifications/', views.notify, name='notify'),
     path('product/', views.products, name="products"),
+    path('product/delete/<str:batch_no>', views.delete_product, name="delete-product"),
 ]

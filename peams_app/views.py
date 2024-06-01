@@ -128,3 +128,8 @@ def products(request):
         'products' : products,
     }
     return render(request, 'peams_app/product.html', context)
+
+def delete_product(request, batch_no):
+    product = Product.objects.get(batch_no=batch_no)
+    product.delete()
+    return HttpResponseRedirect(reverse("products"))
