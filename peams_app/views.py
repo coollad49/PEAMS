@@ -67,7 +67,7 @@ def register(request):
 def tracker_update():
     today = timezone.now().date()
     one_month_later = today + timedelta(days=30)
-    items_to_update = Product.objects.filter(expiry_date=one_month_later, about_to_expire=False)
+    items_to_update = Product.objects.filter(expiry_date__lte=one_month_later, about_to_expire=False)
 
     for product in items_to_update:
         product.about_to_expire = True
