@@ -20,7 +20,14 @@ def login_view(request):
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
+        
+        # Check the users in the database
+        # for user in User.objects.all():
+        #     print(f"Registered User: {user.username}, Active: {user.is_active}, Password Match: {user.check_password(password)}")
+
+        # Attempt to authenticate user
         user = authenticate(request, username=username, password=password)
+        print(f"Authenticated User: {user}")
 
         # Check if authentication successful
         if user is not None:
@@ -42,9 +49,10 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
-        # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
+        
+        # Ensure password matches confirmation
         if password != confirmation:
             return render(request, "peams_app/register.html", {
                 "message": "Passwords must match."
@@ -52,12 +60,14 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, password)
+            user = User(username=username, email=email)
+            user.set_password(password)  # Hash the password
             user.save()
         except IntegrityError:
             return render(request, "peams_app/register.html", {
                 "message": "Username already taken."
             })
+        
         login(request, user)
         return HttpResponseRedirect(reverse("home"))
     else:
