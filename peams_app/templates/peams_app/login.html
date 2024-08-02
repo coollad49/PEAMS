@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'peams_app/login.css' %}">
     <script src="{% static 'peams_app/script.js' %}"></script>
+    <style>
+        body{
+            background-image: url('/static/peams_app/basket.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh; /* Ensures the image covers the full viewport height */
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     {% if message %}

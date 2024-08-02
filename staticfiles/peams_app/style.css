@@ -30,6 +30,7 @@ nav ul li a {
 }
 
 .hero {
+  background-image: url('/static/peams_app/items.jpg')
   background-size: cover;
   background-position: center;
   color: #000000;

@@ -1,27 +1,3 @@
-// const loginForm = document.getElementById('login-form')
-// loginForm.addEventListener('submit', function (event){
-//     event.preventDefault();
-//     location.href = 'home.html';
-// })
-// // Get the values from the input fields
-// const username = document.getElementById('username').value;
-// const password = document.getElementById('password').value;
-
-// const alerts = [
-//     {
-//         id: 1,
-//         product: 'Product A',
-//         expiryDate: '2024-06-01',
-//         type: 'expired'
-//     },
-//     {
-//         id: 2,
-//         product: 'Product B',
-//         expiryDate: '2024-05-30',
-//         type: 'warning'
-//     },
-//     // Add more alerts as needed
-// ];
 
 // Function to render notification items
 function renderNotification(alert) {
