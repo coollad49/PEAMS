@@ -6,10 +6,12 @@
 {% endblock%}
 
 {% block body %}
-    <section class="hero">
-        <h1>Streamline Your Product Expiry Management</h1>
-        <p>PEAMS is a comprehensive solution to ensure consumer safety, minimize financial losses, and maintain regulatory compliance.</p>
-        <button class="cta">Get Started</button>
+    <section class="hero" style="background-image: url('static/peams_app/items.jpg');">
+        <div class="bg-light py-4 bg-opacity-75">
+            <h1>Streamline Your Product Expiry Management</h1>
+            <p>PEAMS is a comprehensive solution to ensure consumer safety, minimize financial losses, and maintain regulatory compliance.</p>
+            <button class="cta">Get Started</button>
+        </div>
     </section>
 
     <section class="features">
@@ -27,7 +29,20 @@
         <h2>About PEAMS</h2>
         <p>PEAMS is a cutting-edge solution designed to revolutionize product expiry management in Nigeria. By leveraging advanced technologies, we empower organizations across various industries to proactively manage their inventory, minimize wastage, and ensure compliance with regulatory requirements.</p>
     </section>
-
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        {% for notification in notifications %}
+            <div class="toast fade show bg-danger-subtle" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{notification.name}} has Expired!!
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
 {% endblock %}
 
 {% block script %}

@@ -11,8 +11,10 @@ from datetime import datetime
 # Create your views here.
 @login_required
 def index(request):
-
-    return render(request, 'peams_app/home.html')
+    products = Product.objects.filter(expired=True)
+    return render(request, 'peams_app/home.html', {
+        "notifications": products
+    })
 
 
 def login_view(request):

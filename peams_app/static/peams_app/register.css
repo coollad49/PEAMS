@@ -2,7 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url('/static/peams_app/basket.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh; /* Ensures the image covers the full viewport height */
 }
+
 header {
     background-color: #333;
     color: #fff;
@@ -32,10 +38,10 @@ nav ul li a {
     height: calc(100vh - 140px); /* Subtract the header and footer height */
 }
 .registration-container {
-    background-color: white;
     padding: 40px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
     text-align: center;
 }
