@@ -117,6 +117,7 @@ nav ul li a {
 .expiration-calendar {
   width: 100%;
   border-collapse: collapse;
+  background-color: white;
 }
 
 .expiration-calendar th, .expiration-calendar td {
